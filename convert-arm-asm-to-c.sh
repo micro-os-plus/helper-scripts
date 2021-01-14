@@ -166,7 +166,7 @@ handler_ptr_t _interrupt_vectors[] =
     PendSV_Handler,                    // The PendSV handler
     SysTick_Handler,                   // The SysTick handler
 
-    // ----------------------------------------------------------------------
+    // ------------------------------------------------------------------------
 EOF
 
 cat "${TMP_FILE}" | \
