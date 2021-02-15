@@ -44,13 +44,6 @@ function clone-and-link()
     echo "${repo_name}.git already present, skiped..."
   else
     git clone --branch xpack-develop https://github.com/micro-os-plus/${repo_name}.git ${repo_name}.git
-    if [ $# -gt 2 ]
-    then
-      local commit_id="$2"
-      (cd ${repo_name}.git; git checkout -b xpack-develop ${commit_id})
-    else
-      (cd ${repo_name}.git; git checkout -b xpack-develop HEAD)
-    fi
   fi
 
   # Link it to the central xPacks repo.
@@ -61,7 +54,7 @@ function clone-and-link()
 
 
 (
-  dest="${HOME}/Work/micro-os-plus/xpack-repos"
+  dest="${HOME}/Work/micro-os-plus-xpack-repos"
   mkdir -p "${dest}"
   cd "${dest}"
 
