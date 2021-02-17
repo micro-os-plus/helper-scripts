@@ -52,9 +52,16 @@ function clone-and-link()
 
 # -----------------------------------------------------------------------------
 
+# "$1" is an optional destination folder path.
+# The default is `${HOME}/Work/micro-os-plus-xpack-repos`.
 
 (
-  dest="${HOME}/Work/micro-os-plus-xpack-repos"
+  if [ $# -ge 1 ]
+  then
+    dest="$1"
+  else
+    dest="${HOME}/Work/micro-os-plus-xpack-repos"
+  fi
   mkdir -p "${dest}"
   cd "${dest}"
 
