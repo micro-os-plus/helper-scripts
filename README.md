@@ -25,3 +25,9 @@ The input file is usually from the vendor CMSIS, something like `${HOME}/STM32Cu
 ```bash
 bash convert-arm-asm-to-c.sh ${input} >${output}
 ```
+
+## clone-and-link-all-git-repos.sh
+
+Script to download all source xPacks.
+
+The first argument is an optional destination folder path.
