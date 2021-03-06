@@ -54,11 +54,14 @@ sed -E 's|[[:space:]]*DCD[[:space:]]*||' | \
 sed -E 's|[[:space:]]+$||' \
 > "${TMP_FILE}"
 
-cat <<EOF
+current_year=$(date +"%Y")
+
+# Note: __EOF__ is NOT quoted to allow substitutions.
+cat <<__EOF__
 /*
  * This file is part of the µOS++ distribution.
  *   (https://github.com/micro-os-plus)
- * Copyright (c) 2020 Liviu Ionescu.
+ * Copyright (c) ${current_year} Liviu Ionescu.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -106,7 +109,7 @@ Default_Handler(void);
  * take precedence over these weak definitions.
  */
 
-EOF
+__EOF__
 
 cat "${TMP_FILE}" | \
 sed -e '/^0/d' | \
@@ -118,7 +121,8 @@ sed -e 's|.*|void __attribute__ ((weak, alias ("Default_Handler")))\
 
 echo
 
-cat <<EOF
+# Note: __EOF__ is NOT quoted to allow substitutions.
+cat <<__EOF__
 // ----------------------------------------------------------------------------
 
 extern uint32_t _initial_main_stack_pointer;
@@ -171,7 +175,7 @@ handler_ptr_t _interrupt_vectors[] =
     SysTick_Handler,                   // The SysTick handler
 
     // ------------------------------------------------------------------------
-EOF
+__EOF__
 
 cat "${TMP_FILE}" | \
 sed -E '/^[[:space:]]*$/d' | \
@@ -182,7 +186,7 @@ sed -e 's|_Handler|_Handler,|' | \
 sed -e 's|;|\/\/|' | \
 sed -e 's|^|    |'
 
-cat <<EOF
+cat <<__EOF__
 };
 
 #pragma GCC diagnostic pop
@@ -208,7 +212,7 @@ Default_Handler(void)
 }
 
 // ----------------------------------------------------------------------------
-EOF
+__EOF__
 
 rm "${TMP_FILE}"
 
