@@ -35,7 +35,7 @@ script_folder_name="$(basename "${script_folder_path}")"
 # =============================================================================
 
 # Clone a repo and checkout the development branch, possibly a given commit.
-function clone-and-link()
+function clone()
 {
   local repo_name="$1"
 
@@ -45,6 +45,13 @@ function clone-and-link()
   else
     git clone --branch xpack-develop https://github.com/micro-os-plus/${repo_name}.git ${repo_name}.git
   fi
+}
+
+function clone-and-link()
+{
+  local repo_name="$1"
+
+  clone "${repo_name}"
 
   # Link it to the central xPacks repo.
   xpm link -C ${repo_name}.git
@@ -64,6 +71,8 @@ function clone-and-link()
   fi
   mkdir -p "${dest}"
   cd "${dest}"
+
+  clone "helper-scripts" 
 
   clone-and-link "architecture-cortexm-xpack" 
   clone-and-link "architecture-riscv-xpack" 
