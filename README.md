@@ -25,22 +25,33 @@ curl -L https://raw.githubusercontent.com/micro-os-plus/helper-scripts/master/cl
 
 Script to generate the vectors_xxx.c files for a family.
 
-Provide the path to the CMSIS assembly files, like
-`${HOME}/STM32Cube/Repository/STM32Cube_FW_F0_V1.11.1/Drivers/CMSIS/Device/ST/STM32F0xx/Source/Templates/arm`
-and the path to the destination folder, like
-`eclipse-embed-cdt.github/eclipse-plugins.git/plugins/org.eclipse.embedcdt.templates.stm/templates/micro-os-plus/stm32f0.pack/src/cmsis`:
+It can be invoked with:
 
 ```bash
 bash generate-vectors-from-arm-startup.sh ${from} ${to}
 ```
 
+`from` is the path to the CMSIS assembly files, like:
+
+- `${HOME}/STM32Cube/Repository/STM32Cube_FW_F0_V1.11.1/Drivers/CMSIS/Device/ST/STM32F0xx/Source/Templates/arm`
+
+and `to` is the path to the destination folder, like:
+
+- `eclipse-embed-cdt.github/eclipse-plugins.git/plugins/org.eclipse.embedcdt.templates.stm/templates/micro-os-plus/stm32f0.pack/src/cmsis`:
+
 ## convert-arm-asm-to-c.sh
 
 Script to convert the Arm assembly file into C.
 
-The input file is usually from the vendor CMSIS, something like `${HOME}/STM32Cube/Repository/STM32Cube_FW_F0_V1.11.1/Drivers/CMSIS/Device/ST/STM32F0xx/Source/Templates/arm/startup_stm32f030x6.s`
+It can be invoked with:
 
 ```bash
 bash convert-arm-asm-to-c.sh ${input} >${output}
 ```
 
+The input file is usually an Arm assembly file from the vendor CMSIS, 
+something like:
+
+- `${HOME}/STM32Cube/Repository/STM32Cube_FW_F0_V1.11.1/Drivers/CMSIS/Device/ST/STM32F0xx/Source/Templates/arm/startup_stm32f030x6.s`
+
+---
