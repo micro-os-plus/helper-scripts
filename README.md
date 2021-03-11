@@ -18,7 +18,7 @@ The first argument is an optional destination folder path. The default is
 `${HOME}/Work/micro-os-plus-xpack-repos`.
 
 ```sh
-curl -L https://raw.githubusercontent.com/micro-os-plus/helper-scripts/main/clone-and-link-all-git-repos.sh | bash - 
+curl -L https://raw.githubusercontent.com/micro-os-plus/helper-scripts/master/clone-and-link-all-git-repos.sh | bash - 
 ```
 
 ## generate-vectors-from-arm-startup.sh
