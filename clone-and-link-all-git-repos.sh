@@ -38,12 +38,13 @@ script_folder_name="$(basename "${script_folder_path}")"
 function clone()
 {
   local repo_name="$1"
+  local branch_name="$2"
 
   if [ -d "${repo_name}.git" ]
   then
     echo "${repo_name}.git already present, skiped..."
   else
-    git clone --branch xpack-develop https://github.com/micro-os-plus/${repo_name}.git ${repo_name}.git
+    git clone --branch "${branch_name}" https://github.com/micro-os-plus/${repo_name}.git ${repo_name}.git
   fi
 }
 
@@ -51,7 +52,7 @@ function clone-and-link()
 {
   local repo_name="$1"
 
-  clone "${repo_name}"
+  clone "${repo_name}" "xpack-develop"
 
   # Link it to the central xPacks repo.
   xpm link -C ${repo_name}.git
@@ -72,7 +73,7 @@ function clone-and-link()
   mkdir -p "${dest}"
   cd "${dest}"
 
-  clone "helper-scripts" 
+  clone "helper-scripts" "master"
 
   clone-and-link "architecture-cortexm-xpack" 
   clone-and-link "architecture-riscv-xpack" 
