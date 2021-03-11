@@ -3,6 +3,24 @@
 
 Maintenance scripts used in other packages.
 
+## Submodule
+
+This project is linked as submodule to:
+
+- devices-stm32f0-extras-xpack.git
+- devices-stm32f4-extras-xpack.git
+
+## clone-and-link-all-git-repos.sh
+
+Script to download all source xPacks.
+
+The first argument is an optional destination folder path. The default is
+`${HOME}/Work/micro-os-plus-xpack-repos`.
+
+```sh
+curl -L https://raw.githubusercontent.com/micro-os-plus/helper-scripts/main/clone-and-link-all-git-repos.sh | bash - 
+```
+
 ## generate-vectors-from-arm-startup.sh
 
 Script to generate the vectors_xxx.c files for a family.
@@ -26,8 +44,3 @@ The input file is usually from the vendor CMSIS, something like `${HOME}/STM32Cu
 bash convert-arm-asm-to-c.sh ${input} >${output}
 ```
 
-## clone-and-link-all-git-repos.sh
-
-Script to download all source xPacks.
-
-The first argument is an optional destination folder path.
