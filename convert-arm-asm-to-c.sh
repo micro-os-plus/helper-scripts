@@ -187,7 +187,7 @@ cat <<__EOF__
 void __attribute__ ((section(".after_vectors")))
 Default_Handler(void)
 {
-#if defined(DEBUG)
+#if defined(MICRO_OS_PLUS_DEBUG)
   micro_os_plus_architecture_brk();
 #endif
   while (1)
